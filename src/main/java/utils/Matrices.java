@@ -39,4 +39,22 @@ public abstract class Matrices {
         }
         return matrix;
     }
+
+    public static Matrix createMatrixFromElements(int ... elem) {
+        if (!MathHelper.isNumSquare(elem.length)) {
+            throw new RuntimeException(
+                    "The number of elements is not suitable for creating a matrix. Received elements: " + elem.length);
+        }
+
+        int dimSize = (int)Math.sqrt(elem.length);
+        Matrix matrix = new Matrix(dimSize);
+
+        int curElementIndex = 0;
+        for (int i = 0; i < dimSize; ++i) {
+            for (int j = 0; j < dimSize; j++) {
+                matrix.setCell(i,j,elem[curElementIndex++]);
+            }
+        }
+        return matrix;
+    }
 }
