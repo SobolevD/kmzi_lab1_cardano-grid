@@ -49,7 +49,9 @@ public class Matrix {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (List<Integer> row : instance) {
-            builder.append(row.toString());
+            for (Integer cell : row) {
+                builder.append(cell);
+            }
             builder.append('\n');
         }
         return builder.toString();

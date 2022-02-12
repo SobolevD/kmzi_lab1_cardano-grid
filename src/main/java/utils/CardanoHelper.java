@@ -95,6 +95,10 @@ public class CardanoHelper {
 
 
     public static Matrix createGrid(int matrixDimSize) {
+
+        if (!Objects.equals(matrixDimSize%2, 0))
+            throw new RuntimeException("The dimension of the grid must be an even number");
+
         List<IntPair> allCoordinates = new ArrayList<>();
         List<IntPair> correctCordsList = new ArrayList<>();
         for (int i = 0; i < matrixDimSize; i++) {
