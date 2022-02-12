@@ -40,6 +40,16 @@ public abstract class Matrices {
         return matrix;
     }
 
+    public static Matrix createZeroMatrix(int size) {
+        Matrix matrix = new Matrix(size);
+        for (int i = 0; i < size; ++i) {
+            for (int j = 0; j < size; ++j) {
+                matrix.setCell(i,j, 0);
+            }
+        }
+        return matrix;
+    }
+
     public static Matrix createMatrixFromElements(int ... elem) {
         if (!MathHelper.isNumSquare(elem.length)) {
             throw new RuntimeException(
