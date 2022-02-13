@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MathHelper {
+public abstract class MathHelper {
 
     private static final int MAX_NUM = 1000;
 

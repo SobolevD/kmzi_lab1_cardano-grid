@@ -57,4 +57,20 @@ public class Matrix {
         return builder.toString();
     }
 
+    public String toBeautyString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < getDimensionSize(); ++i) {
+            for (int j = 0; j < getDimensionSize(); j++) {
+                int value = getCell(i,j);
+                if (value == 1)
+                    builder.append("[ ]");
+                else{
+                    builder.append("[X]");
+                }
+            }
+            builder.append('\n');
+        }
+        return builder.toString();
+    }
+
 }

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class CardanoHelper {
+public abstract class CardanoHelper {
 
     public static boolean isCardanoGrid(Matrix matrix) {
         Matrix matrixR90 = Matrices.rotateMatrixRight(matrix);
