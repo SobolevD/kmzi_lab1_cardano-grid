@@ -88,7 +88,7 @@ public abstract class CardanoHelper {
 
         IntPair cellR270 = new IntPair(cellR180.getRightValue(), dimSize-1- cellR180.getLeftValue());
         if (rotateAngle == 270)
-            return cellR180;
+            return cellR270;
 
         throw new RuntimeException("Bad rotate angle");
     }
