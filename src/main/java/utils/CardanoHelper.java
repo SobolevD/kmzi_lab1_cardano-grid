@@ -28,8 +28,6 @@ public abstract class CardanoHelper {
 
         for (int i = 0; i < dimSize; ++i) {
             for (int j = 0; j < dimSize; ++j) {
-                if (i == j)
-                    continue;
                 if (matrix1.getCell(i,j) == 1 && matrix2.getCell(i,j) == 1) {
                     return true;
                 }
@@ -56,21 +54,6 @@ public abstract class CardanoHelper {
         IntPair cellR270 = new IntPair(cellR180.getRightValue(), matrixDimSize-1- cellR180.getLeftValue());
 
         return Arrays.asList(cellR90, cellR180, cellR270);
-    }
-
-    private static List<IntPair> getRestrictedCellsForRotate(int matrixDimSize, IntPair cell, int rotateAngle) {
-
-        IntPair cellR90 = new IntPair(cell.getRightValue(), matrixDimSize-1- cell.getLeftValue());
-        IntPair cellR180 = new IntPair(cellR90.getRightValue(), matrixDimSize-1- cellR90.getLeftValue());
-        IntPair cellR270 = new IntPair(cellR180.getRightValue(), matrixDimSize-1- cellR180.getLeftValue());
-
-        return switch (rotateAngle) {
-            case 0 -> Arrays.asList(cellR90, cellR180, cellR270);
-            case 90 -> Arrays.asList(cell, cellR180, cellR270);
-            case 180 -> Arrays.asList(cellR90, cell, cellR270);
-            case 270 -> Arrays.asList(cellR90, cellR180, cell);
-            default -> throw new RuntimeException("Unknown rotate angle. Must be 0, 90, 180 or 270");
-        };
     }
 
     private static IntPair rotateCords(IntPair cell, int dimSize, int rotateAngle) {
@@ -100,7 +83,6 @@ public abstract class CardanoHelper {
             throw new RuntimeException("The dimension of the grid must be an even number");
 
         List<IntPair> allCoordinates = new ArrayList<>();
-        List<IntPair> correctCordsList = new ArrayList<>();
         for (int i = 0; i < matrixDimSize; i++) {
             for (int j = 0; j < matrixDimSize; j++) {
                 allCoordinates.add(new IntPair(i,j));
@@ -110,6 +92,7 @@ public abstract class CardanoHelper {
         boolean hasRestrictedElements = true;
         int rotateAngle = 0;
 
+        List<IntPair> correctCordsList = new ArrayList<>();
         while (hasRestrictedElements) {
 
 
@@ -142,7 +125,7 @@ public abstract class CardanoHelper {
                 allCoordinates.remove(correctCords);
             }
         }
-        Matrix result = Matrices.createZeroMatrix(matrixDimSize);
+        Matrix result = new Matrix(matrixDimSize);
         for (IntPair correctCords : correctCordsList) {
             result.setCell(correctCords.getLeftValue(), correctCords.getRightValue(), 1);
         }

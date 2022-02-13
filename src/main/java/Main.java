@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main {
 
-    private static final int GRID_SIZE = 8;
+    private static final int GRID_SIZE = 36;
     private static final String RESULT_FILE_NAME = "cardano_grid.txt";
     private static final String BEAUTY_RESULT_FILE_NAME = "cardano_grid_beauty.txt";
 
